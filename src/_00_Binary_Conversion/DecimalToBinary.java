@@ -56,9 +56,9 @@ public class DecimalToBinary {
 		 * 
 		*/
 		
-		System.out.println( convertDecimalToBinary(-5) );
+		System.out.println( convertDecimalToBinary(-4) );
 	}
-	
+	//four bit representation
     public static String convertDecimalToBinary(int decimalNum) {
         String binaryStr = "";
         int original = decimalNum;
@@ -75,36 +75,45 @@ public class DecimalToBinary {
             } else {
                 binaryStr = '0' + binaryStr;
             }
-            
             decimalNum = quotient;
-            
         // 3. Repeat until number is 0
         } while( decimalNum != 0 );
         if(original >= 0) {
         	return binaryStr;
         }
         else {
+            System.out.println(binaryStr);
+
         	String negativeBinaryStr = "";
         	//swap 1's and 0's 
         	for(int i = 0; i < binaryStr.length(); i ++) {
         		if(binaryStr.charAt(i) == '1') {
-        			negativeBinaryStr +=0;
+        			negativeBinaryStr +='0';
         		}
         		else {
-        			negativeBinaryStr +=1;
+        			negativeBinaryStr +='1';
 
         		}
         	}
         	//add one to the result
         	String negativeBinaryFinal = "";
-        	boolean reachedZero = false;
-    		System.out.println(negativeBinaryStr);
-
+        	int stoppingPoint = 0;
         	for(int i = negativeBinaryStr.length()-1; i >= 0; i --) {
         		//trace back from last number to add 1
         		//every 1 becomes 0 until you hit a 0, then change to 1 and stop
+        		if(negativeBinaryStr.charAt(i) == '1') {
+        			negativeBinaryFinal += '0';
+        		}
+        		else {
+        			negativeBinaryFinal += '1';
+        			stoppingPoint = i;
+        			break;
+        		}
         	}
-        	
+        	System.out.println(negativeBinaryStr);
+        	for(int i = stoppingPoint-1; i >=0; i --) {
+        		negativeBinaryFinal = negativeBinaryStr.charAt(i) + negativeBinaryFinal;
+        	}
         	return negativeBinaryFinal;
         }
     }

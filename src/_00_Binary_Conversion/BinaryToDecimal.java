@@ -4,7 +4,7 @@ public class BinaryToDecimal {
 	public static void main(String[] args) {
 		// Binary numbers in Java can be represented with the '0b' prefix.
 		// For example:
-		System.out.println(0b111);
+		//System.out.println(0b111);
 		//This prints 7, because 111 is 7 in binary.
 		
 		//EXAMPLE: Convert 0 1 0 1 1 0 from binary to decimal
@@ -26,12 +26,20 @@ public class BinaryToDecimal {
 		 
 		 */
 		
-
+		System.out.println(convertBinaryToDecimal("010"));
 	}
 
-	private static String convertBinaryToDecimal(int binary) {
-		
-		
-		return null;
+	static int convertBinaryToDecimal(String bitString) {
+		String reversed = "";
+		int sum = 0;
+		for(int i = bitString.length()-1; i >=0; i --) {
+			reversed += bitString.charAt(i);
+		}
+		for(int i = 0; i < reversed.length(); i ++) {
+			if(reversed.charAt(i) == '1') {
+				sum += Math.pow(2, i);
+			}
+		}
+		return sum;
 	}
 }

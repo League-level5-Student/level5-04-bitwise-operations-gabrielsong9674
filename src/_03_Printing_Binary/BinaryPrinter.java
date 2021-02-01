@@ -7,16 +7,22 @@ public class BinaryPrinter {
 	//Don't be afraid to use the methods that are already complete to finish the others.
 	//Create a main method to test your methods.
 	
-	public void printByteBinary(byte b) {
+	public static void main(String[] args) {
+		byte b = 10;
+		printByteBinary(b);
+		printIntBinary(11);
+	}
 	
+	public static void printByteBinary(byte b) {
+		System.out.println(b);
 	}
 	
 	public void printShortBinary(short s) {
 		
 	}
 	
-	public void printIntBinary(int i) {
-		
+	public static void printIntBinary(int i) {
+		System.out.println(_00_Binary_Conversion.DecimalToBinary.convertDecimalToBinary(i));
 	}
 	
 	public void printLongBinary(long l) {
