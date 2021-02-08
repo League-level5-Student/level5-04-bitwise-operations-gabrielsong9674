@@ -8,13 +8,11 @@ public class BinaryPrinter {
 	//Create a main method to test your methods.
 	
 	public static void main(String[] args) {
-		byte b = 10;
-		printByteBinary(b);
-		printIntBinary(11);
+		
 	}
 	
 	public static void printByteBinary(byte b) {
-		System.out.println(b);
+		
 	}
 	
 	public void printShortBinary(short s) {
@@ -22,10 +20,8 @@ public class BinaryPrinter {
 	}
 	
 	public static void printIntBinary(int i) {
-		System.out.println(_00_Binary_Conversion.DecimalToBinary.convertDecimalToBinary(i));
 	}
 	
-	public void printLongBinary(long l) {
-		
+	public static void printLongBinary(long l) {
 	}
 }

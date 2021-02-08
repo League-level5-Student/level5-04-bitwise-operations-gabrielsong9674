@@ -55,66 +55,43 @@ public class DecimalToBinary {
 		 *  *hint* https://en.wikipedia.org/wiki/Two%27s_complement
 		 * 
 		*/
+		System.out.println( convertDecimalToBinary( 2 ) );
+
+		System.out.println( convertNegativeToBinary( -2 ) );
+
 		
-		System.out.println( convertDecimalToBinary(-4) );
 	}
-	//four bit representation
+	
     public static String convertDecimalToBinary(int decimalNum) {
         String binaryStr = "";
-        int original = decimalNum;
-        if (decimalNum < 0) {
-        	decimalNum *= -1;
+	        do {
+	            // 1. Logical right shift by 1
+	            int quotient = decimalNum >>> 1;
+	        
+	            // 2. Check remainder and add '1' or '0'
+	            if( decimalNum % 2 != 0 ){
+	                binaryStr = '1' + binaryStr;
+	            } else {
+	                binaryStr = '0' + binaryStr;
+	            }
+	            
+	            decimalNum = quotient;
+	            
+	        // 3. Repeat until number is 0
+	        } while( decimalNum != 0 );
+        while (binaryStr.length() != 8) {
+        	binaryStr = '0' + binaryStr;
         }
-        
-        do {
-            // 1. Logical right shift by 1
-            int quotient = decimalNum >>> 1;
-            // 2. Check remainder and add '1' or '0'
-            if( decimalNum % 2 != 0 ){
-                binaryStr = '1' + binaryStr;
-            } else {
-                binaryStr = '0' + binaryStr;
-            }
-            decimalNum = quotient;
-        // 3. Repeat until number is 0
-        } while( decimalNum != 0 );
-        if(original >= 0) {
-        	return binaryStr;
-        }
-        else {
-            System.out.println(binaryStr);
-
-        	String negativeBinaryStr = "";
-        	//swap 1's and 0's 
-        	for(int i = 0; i < binaryStr.length(); i ++) {
-        		if(binaryStr.charAt(i) == '1') {
-        			negativeBinaryStr +='0';
-        		}
-        		else {
-        			negativeBinaryStr +='1';
-
-        		}
-        	}
-        	//add one to the result
-        	String negativeBinaryFinal = "";
-        	int stoppingPoint = 0;
-        	for(int i = negativeBinaryStr.length()-1; i >= 0; i --) {
-        		//trace back from last number to add 1
-        		//every 1 becomes 0 until you hit a 0, then change to 1 and stop
-        		if(negativeBinaryStr.charAt(i) == '1') {
-        			negativeBinaryFinal += '0';
-        		}
-        		else {
-        			negativeBinaryFinal += '1';
-        			stoppingPoint = i;
-        			break;
-        		}
-        	}
-        	System.out.println(negativeBinaryStr);
-        	for(int i = stoppingPoint-1; i >=0; i --) {
-        		negativeBinaryFinal = negativeBinaryStr.charAt(i) + negativeBinaryFinal;
-        	}
-        	return negativeBinaryFinal;
-        }
+	        return binaryStr;
+       
+    }
+    public static String convertNegativeToBinary(int decimalNum) {
+    	//sum of a number and it's two's complement is 2^numBits
+    	//2^numBits = number + twoComplement
+    	//twoComplement = 2^numBits - number
+    	double twoComplement = Math.pow(2, 8) - Math.abs(decimalNum);
+    	System.out.println(twoComplement + Math.abs(decimalNum));
+    	String binary = convertDecimalToBinary((int) twoComplement);
+    	return binary;
     }
 }
