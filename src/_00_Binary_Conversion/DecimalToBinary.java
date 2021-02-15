@@ -55,7 +55,7 @@ public class DecimalToBinary {
 		 *  *hint* https://en.wikipedia.org/wiki/Two%27s_complement
 		 * 
 		*/
-		System.out.println( convertDecimalToBinary( 2 ) );
+		System.out.println( convertDecimalToBinary( 128 ) );
 
 		System.out.println( convertNegativeToBinary( -2 ) );
 
