@@ -7,7 +7,7 @@ public class AndOrXor {
 		
 		// EXAMPLE:
 		// What is the value of 5 & 9?
-		int num = 5 & 9;
+		int num = 9 & 9;
 		System.out.println(num); // This prints 1
 		
 		// 5     = 0 1 0 1
@@ -23,7 +23,7 @@ public class AndOrXor {
 		//The single | operator is used to "or" the bits together.
 		// EXAMPLE:
 		// What is the value of 5 | 9?
-		num = 5 | 9;
+		num = 6 | 5;
 		System.out.println(num); // This prints 13
 		
 		// 5     = 0 1 0 1
@@ -39,7 +39,7 @@ public class AndOrXor {
 		//The single ^ operator is used to "exclusively or" the bits together.
 		// EXAMPLE:
 		// What is the value of 3 ^ 7?
-		num = 3 ^ 7;
+		num = 13 ^ 10;
 		System.out.println(num); // This prints 4
 		
 		// 3     = 0 1 1

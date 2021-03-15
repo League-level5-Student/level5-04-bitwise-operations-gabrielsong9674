@@ -26,7 +26,7 @@ public class BinaryToDecimal {
 		 
 		 */
 		
-		System.out.println(convertBinaryToDecimal("010"));
+		System.out.println(convertBinaryToDecimal("11111111 11111111 01111111"));
 	}
 
 	static int convertBinaryToDecimal(String bitString) {

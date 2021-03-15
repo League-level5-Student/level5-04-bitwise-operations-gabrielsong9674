@@ -54,25 +54,42 @@ public class Base64Decoder {
 	public static byte[] convert4CharsTo24Bits(String s){
 
 		System.out.println(s);
-		byte[] decoded = new byte[3];
+		byte[] encoded = new byte[3];
 		char[] characters = new char[4];
 		characters = s.toCharArray();
 		
-		decoded[0] = (byte)((convertBase64Char(characters[0]) << 2) + (convertBase64Char(characters[1])>>4
-				));
-		BinaryPrinter.printByteBinary(decoded[0]);
-		decoded[1] = (byte)((convertBase64Char(characters[1]) << 4) + (convertBase64Char(characters[2])>>2));
-		BinaryPrinter.printByteBinary(decoded[1]);
-		decoded[2] =  (byte)((convertBase64Char(characters[2]) << 6) + (convertBase64Char(characters[3])));
-		BinaryPrinter.printByteBinary(decoded[2]);
+		encoded[0] = (byte)((convertBase64Char(characters[0]) << 2) + (convertBase64Char(characters[1])>>4));
+		//BinaryPrinter.printByteBinary(encoded[0]);
+		encoded[1] = (byte)((convertBase64Char(characters[1]) << 4) + (convertBase64Char(characters[2])>>2));
+		//BinaryPrinter.printByteBinary(encoded[1]);
+		encoded[2] =  (byte)((convertBase64Char(characters[2]) << 6) + (convertBase64Char(characters[3])));
+		//BinaryPrinter.printByteBinary(encoded[2]);
 		
 		
-		return decoded;
+		return encoded;
 	}
 	
 	//3. Complete this method so that it takes in a string of any length
 	//   and returns the full byte array of the decoded base64 characters.
+	
+	//1 char is used to represent 6 bits of data
+	//4 chars are used for 3 bytes (24 bits)
+	
+	//every 4 bits needs to be converted from base 64 to 3 bytes of binary
 	public static byte[] base64StringToByteArray(String file) {
-		return null;
+
+		byte[] decoded = new byte[(int)(file.length()*(3.0/4.0))];
+		String temp = "";
+		int count = 0;
+		for(int i = 0; i < file.length(); i += 4) {
+			temp = file.substring(i, i+4);
+			byte[] threeBytes = convert4CharsTo24Bits(temp);
+			for(int j = 0; j < 3; j ++) {
+				decoded[count] = threeBytes[j];
+				count ++;
+			}
+		}
+		
+		return decoded;
 	}
 }
